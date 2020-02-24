@@ -3,6 +3,7 @@ import cors from "cors";
 import routes from "./routes";
 import { cliSetup } from "./start_up/set_up";
 import { askGithubCredentials } from "./start_up/enquirer";
+import CLI from "clui";
 
 cliSetup();
 
@@ -10,6 +11,14 @@ const run = async () => {
   const credentials = await askGithubCredentials();
   console.log(credentials);
 };
+
+const status = new CLI.Spinner("Authenticating you, please wait...");
+
+status.start();
+
+setTimeout(() => {
+  status.stop();
+}, 9000);
 
 run();
 
