@@ -1,6 +1,9 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import routes from "./routes";
+import { cliSetup } from "./start_up/set_up";
+
+cliSetup();
 const app = express();
 const API_PREFIX = "/api";
 app.use(cors());
