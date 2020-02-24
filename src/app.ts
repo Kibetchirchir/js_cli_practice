@@ -2,8 +2,17 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import routes from "./routes";
 import { cliSetup } from "./start_up/set_up";
+import { askGithubCredentials } from "./start_up/enquirer";
 
 cliSetup();
+
+const run = async () => {
+  const credentials = await askGithubCredentials();
+  console.log(credentials);
+};
+
+run();
+
 const app = express();
 const API_PREFIX = "/api";
 app.use(cors());
